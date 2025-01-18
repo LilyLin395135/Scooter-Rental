@@ -1,4 +1,4 @@
-import { createUser } from "../../controllers/userController.js";
+import { createUser } from "../../controllers/user.js";
 import * as userModel from "../../models/user.js";
 
 jest.mock("../../models/user.js", () => ({
