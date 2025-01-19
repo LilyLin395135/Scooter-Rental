@@ -9,7 +9,7 @@ describe("Scooter Model", () => {
   });
 
   it("should return a scooter if found by licensePlate", async () => {
-    const mockScooter = { id: 1, model: "Yamaha", licensePlate: "123-ABC" };
+    const mockScooter = { id: 1, model: "Yamaha", license_plate: "123-ABC" };
     pool.query.mockResolvedValue([[mockScooter]]);
 
     const scooter = await findScooterByLicensePlate("123-ABC");
@@ -23,6 +23,6 @@ describe("Scooter Model", () => {
 
     const scooter = await insertScooter("Yamaha", "123-ABC");
     expect(pool.query).toHaveBeenCalledWith("INSERT INTO Scooter (model, license_plate) VALUES (?, ?)", ["Yamaha", "123-ABC"]);
-    expect(scooter).toEqual({ id: 1, model: "Yamaha", licensePlate: "123-ABC" });
+    expect(scooter).toEqual({ id: 1, model: "Yamaha", license_plate: "123-ABC" });
   });
 });

@@ -10,7 +10,14 @@ export const createScooter = async (req, res, next) => {
     }
 
     const newScooter = await insertScooter(model, licensePlate);
-    res.status(201).json({ message: "Scooter created successfully.", scooter: newScooter });
+    res.status(201).json({
+      message: "Scooter created successfully.",
+      scooter: {
+        id: newScooter.id,
+        model: newScooter.model,
+        licensePlate: newScooter.license_plate
+      }
+    });
   } catch (error) {
     next(error);
   }

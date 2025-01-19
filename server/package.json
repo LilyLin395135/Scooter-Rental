@@ -4,7 +4,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "jest tests/controllers/rent.test.js"
+    "test": "jest tests/validation/rent.test.js"
   },
   "keywords": [],
   "author": "",

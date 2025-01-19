@@ -11,3 +11,9 @@ export const createRentValidator = [
     .notEmpty().withMessage("Start time is required.")
     .isISO8601().withMessage("Start time must be a valid ISO8601 date string."),
 ];
+
+export const returnRentValidator = [
+  body("endTime")
+    .notEmpty().withMessage("End time is required.")
+    .isISO8601().withMessage("End time must be a valid datetime."),
+];

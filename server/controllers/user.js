@@ -16,11 +16,3 @@ export const createUser = async (req, res, next) => {
         next(error);
     }
 };
-
-export const getUsers = (req, res, next) => {
-    try {
-        res.status(200).json({ users: ["user1", "user2"] });
-    } catch (error) {
-        next(error);
-    }
-};

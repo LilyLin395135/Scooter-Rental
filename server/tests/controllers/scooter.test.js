@@ -23,7 +23,11 @@ describe("Create Scooter Controller", () => {
   });
 
   it("should return 400 if licensePlate already exists", async () => {
-    scooterModel.findScooterByLicensePlate.mockResolvedValue({ id: 1, model: "Yamaha", licensePlate: "123-ABC" });
+    scooterModel.findScooterByLicensePlate.mockResolvedValue({
+      id: 1,
+      model: "Yamaha",
+      license_plate: "123-ABC"
+    });
 
     await createScooter(req, res, next);
 
@@ -34,7 +38,11 @@ describe("Create Scooter Controller", () => {
 
   it("should create a new scooter and return 201", async () => {
     scooterModel.findScooterByLicensePlate.mockResolvedValue(null);
-    scooterModel.insertScooter.mockResolvedValue({ id: 1, model: "Yamaha", licensePlate: "123-ABC" });
+    scooterModel.insertScooter.mockResolvedValue({
+      id: 1,
+      model: "Yamaha",
+      license_plate: "123-ABC"
+    });
 
     await createScooter(req, res, next);
 
@@ -43,7 +51,11 @@ describe("Create Scooter Controller", () => {
     expect(res.status).toHaveBeenCalledWith(201);
     expect(res.json).toHaveBeenCalledWith({
       message: "Scooter created successfully.",
-      scooter: { id: 1, model: "Yamaha", licensePlate: "123-ABC" },
+      scooter: {
+        id: 1,
+        model: "Yamaha",
+        licensePlate: "123-ABC"
+      },
     });
   });
 

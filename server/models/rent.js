@@ -21,9 +21,26 @@ export const insertRent = async (userId, scooterId, startTime) => {
   const [result] = await pool.query(sql, [userId, scooterId, startTime]);
   return {
     id: result.insertId,
-    userId,
-    scooterId,
-    startTime,
-    endTime: null,
+    user_id: userId,
+    scooter_id: scooterId,
+    start_time: startTime,
+    end_time: null,
   };
+};
+
+// Find rent by ID
+export const findRentById = async (id) => {
+  const sql = "SELECT * FROM Rent WHERE id = ?";
+  const [rows] = await pool.query(sql, [id]);
+  return rows[0] || null;
+};
+
+// Update rent
+export const endRent = async (id, endTime) => {
+  const updateSql = "UPDATE Rent SET end_time = ? WHERE id = ?";
+  await pool.query(updateSql, [endTime, id]);
+
+  const selectSql = "SELECT * FROM Rent WHERE id = ?";
+  const [rows] = await pool.query(selectSql, [id]);
+  return rows[0] || null;
 };
